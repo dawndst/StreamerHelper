@@ -51,7 +51,7 @@ export function main(url: string) {
                         version = version.toString().substr(0, version.toString().length - 4)
 
 
-                        const post_data: string = `cdn=tct-h5&did=${device_id}&iar=0&ive=0&rate=0&v=${version}&tt=${request_time}&sign=${sign}`
+                        const post_data: string = `cdn=tct-h5&did=${device_id}&iar=0&ive=0&rate=4&v=${version}&tt=${request_time}&sign=${sign}`
                         axios
                             .post(`https://www.douyu.com/lapi/live/getH5Play/${rid}`, post_data, {
                                 headers: {
