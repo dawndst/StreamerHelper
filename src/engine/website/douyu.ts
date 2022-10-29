@@ -75,7 +75,7 @@ export function main(url: string) {
                                 let rtmp_url: string = h5_play_data['data']['rtmp_url']
                                 let rtmp_addr: string = h5_play_data['data']['rtmp_live']
                                 logger.info("---Origin---")
-                                logger.info(rtmp_addr)
+                                logger.info(rtmp_url+"/"+rtmp_addr)
                                 logger.info("---DATA---")
                                 logger.info(h5_play_data['data'])
                             
@@ -86,7 +86,7 @@ export function main(url: string) {
                             
                                 let stream_url: string = rtmp_url + "/" + rtmp_addr
                                 logger.info("---Replaced---")
-                                logger.info(rtmp_addr)
+                                logger.info(stream_url)
                                 resolve(String(stream_url));
                             })
                             .catch(function (error: any) {
