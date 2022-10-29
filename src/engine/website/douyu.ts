@@ -54,7 +54,7 @@ export function main(url: string) {
                         version = version.toString().substr(0, version.toString().length - 4)
 
 
-                        const post_data: string = `cdn=tct-h5&did=${device_id}&iar=0&ive=0&rate=4&v=${version}&tt=${request_time}&sign=${sign}`
+                        const post_data: string = `cdn=tct-h5&did=${device_id}&iar=0&ive=0&rate=0&v=${version}&tt=${request_time}&sign=${sign}`
                         axios
                             .post(`https://www.douyu.com/lapi/live/getH5Play/${rid}`, post_data, {
                                 headers: {
@@ -76,11 +76,6 @@ export function main(url: string) {
                                 let rtmp_addr: string = h5_play_data['data']['rtmp_live']
                                 logger.info("---Origin---")
                                 logger.info(rtmp_addr)
-                            
-                                if(rtmp_addr.search("playlist.m3u8") != -1)
-                                {
-                                    rtmp_addr = rtmp_addr.replace("/playlist.m3u8", "_4000/playlist.m3u8")
-                                }
                                 
                                 let stream_url: string = rtmp_url + "/" + rtmp_addr
                                 logger.info("---Replaced---")
