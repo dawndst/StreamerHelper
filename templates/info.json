@@ -4,7 +4,7 @@
     "roomCheckTime": 180,
     "recycleCheckTime": 1800,
     "videoPartLimitSize": 100,
-    "logLevel": "error",
+    "logLevel": "trace",
     "push": {
       "mail": {
         "enable": true,
