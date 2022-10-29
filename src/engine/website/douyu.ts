@@ -76,17 +76,14 @@ export function main(url: string) {
                                 let rtmp_addr: string = h5_play_data['data']['rtmp_live']
                                 logger.info("---Origin---")
                                 logger.info(rtmp_addr)
+                                logger.info("---DATA---")
+                                logger.info(h5_play_data['data'])
                             
                                 if(rtmp_addr.search("playlist.m3u8") != -1)
                                 {
                                     rtmp_addr = rtmp_addr.replace("/playlist.m3u8", "_4000/playlist.m3u8")
                                 }
-                                
-                                if(rtmp_addr.search(".flv") != -1)
-                                {
-                                    rtmp_addr = rtmp_addr.replace(".flv", "_4000.flv")
-                                }
-                                
+                            
                                 let stream_url: string = rtmp_url + "/" + rtmp_addr
                                 logger.info("---Replaced---")
                                 logger.info(rtmp_addr)
