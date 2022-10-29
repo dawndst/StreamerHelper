@@ -82,10 +82,10 @@ export function main(url: string) {
                                     rtmp_addr = rtmp_addr.replace("/playlist.m3u8", "_4000/playlist.m3u8")
                                 }
                                 
-                                if(rtmp_addr.search(".flv") != -1)
-                                {
-                                    rtmp_addr = rtmp_addr.replace(".flv", "_4000.flv")
-                                }
+                               //if(rtmp_addr.search(".flv") != -1)
+                               // {
+                               //     rtmp_addr = rtmp_addr.replace(".flv", "_4000.flv")
+                                //}
                                 
                                 let stream_url: string = rtmp_url + "/" + rtmp_addr
                                 logger.info("---Replaced---")
