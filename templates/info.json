@@ -1,7 +1,7 @@
 {
   "StreamerHelper": {
     "debug": true,
-    "roomCheckTime": 600,
+    "roomCheckTime": 180,
     "recycleCheckTime": 1800,
     "videoPartLimitSize": 100,
     "logLevel": "error",
@@ -40,7 +40,7 @@
       "source": "",
       "dynamic": "",
       "copyright": 2,
-      "roomUrl": "https://www.douyu.com/71415",
+      "roomUrl": "https://www.douyu.com/911",
       "tid": 121,
       "tags": [
         "tag1",
