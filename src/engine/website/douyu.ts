@@ -68,7 +68,22 @@ export function main(url: string) {
                                 if (h5_play_data['error'] != 0) {
                                     reject('DOUYU=>No match results:' + h5_play_data['msg'])
                                 }
-                                let stream_url: string = h5_play_data['data']['rtmp_url'] + "/" + h5_play_data['data']['rtmp_live']
+                                
+                                let rtmp_url: string = h5_play_data['data']['rtmp_url']
+                                let rtmp_addr: string = h5_play_data['data']['rtmp_live']
+                                
+                                if(rtmp_addr.search("playlist.m3u8") != -1)
+                                {
+                                    rtmp_addr = rtmp_addr.replace("/playlist.m3u8", "_4000/playlist.m3u8")
+                                }
+                                
+                                if(rtmp_addr.search(".flv") != -1)
+                                {
+                                    rtmp_addr = rtmp_addr.replace(".flv", "_4000.flv")
+                                }
+                                
+                                let stream_url: string = rtmp_url + "/" + rtmp_addr
+                                console.log(stream_url)
                                 resolve(String(stream_url));
                             })
                             .catch(function (error: any) {
