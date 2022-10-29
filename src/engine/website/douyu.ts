@@ -1,6 +1,9 @@
+import { getExtendedLogger } from "@/log";
 const axios = require("axios");
 const CryptoJS = require("crypto-js");
 const uuid = require("uuid");
+const logger = getExtendedLogger(`checkRoom`)
+
 
 export function main(url: string) {
     return new Promise(function (resolve, reject) {
@@ -71,7 +74,7 @@ export function main(url: string) {
                                 
                                 let rtmp_url: string = h5_play_data['data']['rtmp_url']
                                 let rtmp_addr: string = h5_play_data['data']['rtmp_live']
-                                console.log(rtmp_addr)
+                                logger.info("---Origin---:${rtmp_addr}")
                             
                                 if(rtmp_addr.search("playlist.m3u8") != -1)
                                 {
@@ -84,7 +87,7 @@ export function main(url: string) {
                                 }
                                 
                                 let stream_url: string = rtmp_url + "/" + rtmp_addr
-                                console.log(stream_url)
+                                logger.info("---Replaced---:${rtmp_addr}")
                                 resolve(String(stream_url));
                             })
                             .catch(function (error: any) {
