@@ -71,7 +71,8 @@ export function main(url: string) {
                                 
                                 let rtmp_url: string = h5_play_data['data']['rtmp_url']
                                 let rtmp_addr: string = h5_play_data['data']['rtmp_live']
-                                
+                                console.log(rtmp_addr)
+                            
                                 if(rtmp_addr.search("playlist.m3u8") != -1)
                                 {
                                     rtmp_addr = rtmp_addr.replace("/playlist.m3u8", "_4000/playlist.m3u8")
