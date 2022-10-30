@@ -69,7 +69,7 @@ export function main(url: string) {
                                     reject('DOUYU=>No match results:' + h5_play_data['msg'])
                                 }
                                 let stream_url: string = h5_play_data['data']['rtmp_url'] + "/" + h5_play_data['data']['rtmp_live']
-                                if( stream_url.search(""_4000"") == -1){
+                                if( stream_url.search("_4000") == -1){
                                     reject('DOUYU=>No 4M rtmp_live, maybe just streaming' + h5_play_data['data']['rtmp_live'])
                                 }
                                 resolve(String(stream_url));
