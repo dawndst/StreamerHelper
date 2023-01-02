@@ -17,7 +17,7 @@ export function main(url: string) {
         axios(config)
             .then(function (response: any) {
                 const html: any = response.data;
-                const reg: RegExp = /(?<=type="application\/x-mpegURL" src=")(.+?)(?=")/;
+                const reg: RegExp = /(?<="url":")(.+?)(?=","name":"蓝光 8M")/;
                 const strs: any = html.match(reg);
                 if (strs && strs.length >= 1) {
                     resolve(strs[0].replace(/#38;/g, ""));
