@@ -2,28 +2,30 @@ const axios = require("axios");
 
 export function main(url: string) {
     return new Promise(function (resolve, reject) {
-        const rid: any = url.match(/(?<=u\/)(.+)/g);
+        url.match(/(?<=u\/)(.+)/g);
 
-        const config: any = {
-            method: "get",
-            url: `https://m.gifshow.com/fw/live/${rid[0]}`,
-            headers: {
-                "user-agent":
-                    "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1",
-                cookie: "did=web_",
-            },
-        };
 
-        axios(config)
+        axios.get(`https://live.kuaishou.com/u/3xq7kgxgfrab772`)
             .then(function (response: any) {
                 const html: any = response.data;
-                const reg: RegExp = /(?<="url":")(.+?)(?=","name":"蓝光 8M")/;
+
+                const reg: RegExp = /(?<="adaptationSet":)(.+?)}]}/g;
                 const strs: any = html.match(reg);
+		
                 if (strs && strs.length >= 1) {
-                    resolve(strs[0].replace(/#38;/g, ""));
+
+		    let JSONstr = JSON.parse(strs);
+		    let i;
+		    for (i of JSONstr.representation){
+		    	if(i.qualityType == "BLUE_RAY"){
+			    resolve(i.url);
+
+			}
+		    }
+
                 } else {
                     reject(
-                        "KUAISHOU=>No match results:Maybe the roomid is error,or this room is not open!"
+                        "KUAISHOU=>No match results:Maybeeeeee the roomid is error,or this room is not open!"
                     );
                 }
             })
