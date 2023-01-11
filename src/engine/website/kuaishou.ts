@@ -5,12 +5,13 @@ export function main(url: string) {
         url.match(/(?<=u\/)(.+)/g);
 
 
-        axios.get(`https://live.kuaishou.com/u/3xq7kgxgfrab772`)
+        axios.get(url)
             .then(function (response: any) {
                 const html: any = response.data;
 
                 const reg: RegExp = /(?<="adaptationSet":)(.+?)}]}/g;
                 const strs: any = html.match(reg);
+		console.log('11111111111111');
 		
                 if (strs && strs.length >= 1) {
 
@@ -19,7 +20,9 @@ export function main(url: string) {
 		    for (i of JSONstr.representation){
 		    	if(i.qualityType == "BLUE_RAY"){
 			    resolve(i.url);
-
+			}
+			if(i.qualityType == "SUPER"){
+			    resolve(i.url);
 			}
 		    }
 
